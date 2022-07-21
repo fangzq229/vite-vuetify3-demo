@@ -4,8 +4,8 @@
       <v-img
         width="100vw"
         height="100vh"
-        src="https://www.metagaia.io/assets/images/nft/img_bg.jpg?v=20220418113"
-        lazy-src="https://www.metagaia.io/assets/images/nft/img_bg.jpg?v=20220418113"
+        src=""
+        lazy-src=""
         :aspect-ratio="1"
         cover
       >
@@ -16,9 +16,7 @@
             <v-col cols="12" xs="8" sm="6" md="4" lg="3" xl="2">
               <v-card style="opacity: 0.9">
                 <v-toolbar>
-                  <v-toolbar-title class="text-h6"
-                    >METAGIA ADMIN</v-toolbar-title
-                  >
+                  <v-toolbar-title class="text-h6">Vuetify 3 </v-toolbar-title>
                 </v-toolbar>
                 <v-divider></v-divider>
                 <v-card-text class="justify-center">
@@ -59,9 +57,7 @@
                   </v-btn>
                 </v-card-text>
                 <v-card-actions class="justify-center">
-                  <p class="text-disabled text-subtitle-2">
-                    2022-04-22 ADVOKATE
-                  </p>
+                  <p class="text-disabled text-subtitle-2">Fang</p>
                 </v-card-actions>
               </v-card>
             </v-col>

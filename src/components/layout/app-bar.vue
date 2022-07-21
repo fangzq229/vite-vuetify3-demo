@@ -1,15 +1,28 @@
 <template>
-  <v-app-bar app>
+  <v-app-bar prominent class="elevation-0">
     <template v-slot:prepend>
-      <v-app-bar-nav-icon
-        class="ma-1"
-        @click.stop="sysConf.navDrawer = !sysConf.navDrawer"
-      ></v-app-bar-nav-icon>
-      <!-- <v-breadcrumbs class="d-none d-xl-flex d-lg-flex" :items="routerItems">
-        <template v-slot:divider>
-          <v-icon size="12" icon="arrow_forward_ios"></v-icon>
-        </template>
-      </v-breadcrumbs> -->
+      <v-list width="255">
+        <v-list-item>
+          <v-row class="ml-2 text-title">{{ storeSysConf.sysName }}</v-row>
+          <template v-slot:prepend start>
+            <v-avatar size="small">
+              <v-img :src="storeSysConf.sysLogo"></v-img>
+            </v-avatar>
+          </template>
+          <template v-slot:append>
+            <v-btn
+              class="mr-1"
+              variant="flat"
+              size="small"
+              icon
+              color="info"
+              @click.stop="navUpdate()"
+            >
+              <v-icon size="x-small">density_medium</v-icon>
+            </v-btn>
+          </template>
+        </v-list-item>
+      </v-list>
     </template>
     <v-btn
       :icon="isScreen ? 'center_focus_strong' : 'center_focus_weak'"
@@ -54,13 +67,35 @@
   </v-app-bar>
 </template>
 <script lang="ts">
-import { getCurrentInstance, ref } from "vue";
-import { UseSysConfStore } from "@/store/sysConf";
+import { getCurrentInstance, nextTick, ref } from "vue";
+import { useSysConfStore } from "@/store/sysConf";
+import { useCoreStore } from "@/store/core";
+import { useDisplay } from "vuetify";
 import screenfull from "screenfull";
 export default {
   setup() {
+    const { mobile } = useDisplay();
+    const storeCore = useCoreStore();
+    const storeSysConf = useSysConfStore();
+    let dom: any;
+    function initWin() {
+      storeCore.setCore({ isMobile: mobile.value });
+      storeCore.setCore({
+        mainPL: mobile.value ? "20px" : storeSysConf.navDrawer ? "0px" : "20px",
+      });
+      if (dom) {
+        dom.style.paddingLeft = storeCore.mainPL;
+      }
+    }
+    nextTick(() => {
+      dom = document.getElementsByClassName("v-main__wrap")[0];
+      initWin();
+    });
+    window.onresize = () => {
+      initWin();
+    };
+
     const routerItems = ["Home", "Table"];
-    const sysConf = UseSysConfStore();
     const isScreen = ref(false);
     const { proxy } = getCurrentInstance() as any;
     function handleFullScreen() {
@@ -74,10 +109,15 @@ export default {
     function logout() {
       proxy.$router.push("/login");
     }
+    function navUpdate() {
+      storeSysConf.navDrawer = !storeSysConf.navDrawer;
+      initWin();
+    }
     return {
-      sysConf,
+      storeSysConf,
       isScreen,
       routerItems,
+      navUpdate,
       handleFullScreen,
       logout,
     };

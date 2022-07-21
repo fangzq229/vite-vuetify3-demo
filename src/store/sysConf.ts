@@ -10,12 +10,12 @@ export interface ISysConf {
   companyName: string;
 }
 
-export const UseSysConfStore = defineStore({
+export const useSysConfStore = defineStore({
   id: 'sysConf',
   state: () => ({
     navDrawer: true,
     navBg: '',
-    sysName: 'Vuetify3',
+    sysName: 'VUETIFY 3',
     sysLogo:
       'https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-light.svg',
     sysVersion: '',

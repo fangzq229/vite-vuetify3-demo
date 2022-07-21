@@ -1,27 +1,12 @@
 <template>
   <v-navigation-drawer
-    v-model="sysConf.navDrawer"
-    :rail="rail"
-    permanent
+    floating
+    v-model="storeSysConf.navDrawer"
+    :temporary="storeCore.isMobile"
+    bottom
     @click="rail = false"
-    theme="dark"
-    :image="sysConf.navBg"
+    :image="storeSysConf.navBg"
   >
-    <v-list-item
-      :prepend-avatar="sysConf.sysLogo"
-      :title="sysConf.sysName"
-      height="63"
-    >
-      <template v-slot:append>
-        <v-btn
-          variant="text"
-          size="small"
-          icon="arrow_back_ios"
-          @click.stop="rail = !rail"
-        ></v-btn>
-      </template>
-    </v-list-item>
-    <v-divider></v-divider>
     <!-- 菜单 -->
     <v-list style="background: rgba(0, 0, 0, 0)" class="py-2">
       <div v-for="(item, index) in menuList" :key="index" class="px-2 mb-2">
@@ -55,16 +40,17 @@
 </template>
 <script lang="ts">
 import { ref, reactive } from "vue";
-import { UseSysConfStore } from "@/store/sysConf";
+import { useSysConfStore } from "@/store/sysConf";
+import { useCoreStore } from "@/store/core";
 import { menuConf } from "@/plugins/menu";
 export default {
   setup() {
-    const sysConf = UseSysConfStore();
-    const rail = ref(false);
+    const storeSysConf = useSysConfStore();
+    const storeCore = useCoreStore();
     const menuList = reactive(menuConf);
     return {
-      sysConf,
-      rail,
+      storeCore,
+      storeSysConf,
       menuList,
     };
   },

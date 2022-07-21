@@ -1,5 +1,5 @@
 <template>
-  <v-table height="675">
+  <v-table height="675" fixed-header>
     <thead>
       <tr>
         <th class="text-left">ID</th>
@@ -18,11 +18,8 @@
         <td>{{ item.calories }}</td>
         <td>{{ item.calories }}</td>
         <td width="220" class="flex-wrap">
-          <v-btn size="small" variant="outlined">
+          <v-btn size="xs-small">
             <v-icon>delete_forever</v-icon>
-          </v-btn>
-          <v-btn color="#333" class="ml-2" size="small" variant="outlined">
-            <v-icon>draw</v-icon>
           </v-btn>
         </td>
       </tr>

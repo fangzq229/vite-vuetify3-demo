@@ -1,24 +1,16 @@
 <template>
-  <v-card class="mt-4 mx-auto elevation-0" width="100%">
-    <v-sheet
-      id="sheet_id"
-      class="ml-4"
-      :rounded="10"
-      max-width="calc(100% - 32px)"
-      elevation="3"
-    >
-      <div class="line-charts" ref="lineCharts"></div>
-      <v-card-text class="pt-0">
-        <div class="text-h6">
-          {{ optionVal.title }}
-        </div>
-        <div class="text-body-1">{{ optionVal.subheading }}</div>
-        <v-divider class="my-2"></v-divider>
-        <v-icon small>{{ optionVal.icon }}</v-icon>
-        <span class="text-body-1 pl-2">{{ optionVal.caption }}</span>
-      </v-card-text>
-    </v-sheet>
-  </v-card>
+  <v-sheet id="sheet_id" class="elevation-0" :rounded="10">
+    <div class="line-charts" ref="lineCharts"></div>
+    <v-card-text class="pt-0">
+      <div class="text-h6">
+        {{ optionVal.title }}
+      </div>
+      <div class="text-body-1">{{ optionVal.subheading }}</div>
+      <v-divider class="my-2"></v-divider>
+      <v-icon small>{{ optionVal.icon }}</v-icon>
+      <span class="text-body-1 pl-2">{{ optionVal.caption }}</span>
+    </v-card-text>
+  </v-sheet>
 </template>
 <script lang="ts">
 import {
