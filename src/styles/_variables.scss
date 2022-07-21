@@ -1,0 +1,9 @@
+// Place SASS variable overrides here
+// $font-size-root: 18px;
+.v-toolbar__prepend>.v-btn:first-child {
+  margin-inline-start:0px !important;
+}
+
+$vt-color-success : white;
+$vt-text-color-success: #000;
+
