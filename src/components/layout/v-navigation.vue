@@ -5,8 +5,18 @@
     :temporary="storeCore.isMobile"
     bottom
     :image="storeSysConf.navBg"
-    disable-resize-watcher
   >
+    <!-- isMobile Logo -->
+    <v-list width="255" v-if="storeCore.isMobile">
+      <v-list-item>
+        <v-row class="ml-2 text-title">{{ storeSysConf.sysName }}</v-row>
+        <template v-slot:prepend start>
+          <v-avatar size="small">
+            <v-img :src="storeSysConf.sysLogo"></v-img>
+          </v-avatar>
+        </template>
+      </v-list-item>
+    </v-list>
     <!-- 菜单 -->
     <v-list style="background: rgba(0, 0, 0, 0)" class="py-2">
       <div v-for="(item, index) in menuList" :key="index" class="px-2 mb-2">
@@ -39,7 +49,7 @@
   </v-navigation-drawer>
 </template>
 <script lang="ts">
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import { useSysConfStore } from "@/store/sysConf";
 import { useCoreStore } from "@/store/core";
 import { menuConf } from "@/plugins/menu";

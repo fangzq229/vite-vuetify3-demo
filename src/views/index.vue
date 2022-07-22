@@ -1,10 +1,12 @@
 /* stylelint-disable CssSyntaxError */
 <template>
   <v-layout>
+    <!-- 左侧菜单 -->
+    <vNavigation v-if="storeCore.isMobile"></vNavigation>
     <!-- 上 导航 -->
     <appBar></appBar>
     <!-- 左侧菜单 -->
-    <vNavigation></vNavigation>
+    <vNavigation v-if="!storeCore.isMobile"></vNavigation>
     <!-- 内容部分 -->
     <v-main>
       <v-container fluid class="container-css">

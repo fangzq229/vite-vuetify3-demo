@@ -1,7 +1,21 @@
 <template>
-  <v-app-bar prominent class="elevation-0">
+  <v-app-bar prominent class="elevation-0" app>
     <template v-slot:prepend>
-      <v-list width="255">
+      <v-col v-if="storeCore.isMobile">
+        <v-btn
+          class="mr-1"
+          variant="flat"
+          width="26"
+          height="26"
+          min-width="26"
+          @click.stop="navUpdate()"
+          color="#90CAF9"
+        >
+          <v-icon size="x-small" color="#FFFFFF">density_medium</v-icon>
+        </v-btn>
+      </v-col>
+
+      <v-list width="255" v-if="!storeCore.isMobile">
         <v-list-item>
           <v-row class="ml-2 text-title">{{ storeSysConf.sysName }}</v-row>
           <template v-slot:prepend start>
@@ -13,12 +27,13 @@
             <v-btn
               class="mr-1"
               variant="flat"
-              size="small"
-              icon
-              color="info"
+              width="26"
+              height="26"
+              min-width="26"
               @click.stop="navUpdate()"
+              color="#90CAF9"
             >
-              <v-icon size="x-small">density_medium</v-icon>
+              <v-icon size="x-small" color="#FFFFFF">density_medium</v-icon>
             </v-btn>
           </template>
         </v-list-item>
@@ -48,7 +63,7 @@
     >
     <v-badge color="error" dot>
       <v-btn icon>
-        <v-avatar color="brown" size="30"><span>HD</span></v-avatar>
+        <v-avatar color="brown" size="30"><span>FA</span></v-avatar>
         <v-menu location="bottom end" activator="parent">
           <v-card>
             <v-list-item link>
@@ -118,6 +133,7 @@ export default {
     }
     return {
       storeSysConf,
+      storeCore,
       isScreen,
       routerItems,
       navUpdate,
