@@ -78,7 +78,10 @@ export default {
     const storeCore = useCoreStore();
     const storeSysConf = useSysConfStore();
     let dom: any;
-    function initWin() {
+    function initWin(i?: number) {
+      if (i && mobile.value) {
+        storeSysConf.navDrawer = false;
+      }
       storeCore.setCore({ isMobile: mobile.value });
       storeCore.setCore({
         mainPL: mobile.value ? "20px" : storeSysConf.navDrawer ? "0px" : "20px",
@@ -89,7 +92,7 @@ export default {
     }
     nextTick(() => {
       dom = document.getElementsByClassName("v-main__wrap")[0];
-      initWin();
+      initWin(1);
     });
     window.onresize = () => {
       initWin();

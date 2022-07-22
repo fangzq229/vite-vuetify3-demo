@@ -4,8 +4,8 @@
     v-model="storeSysConf.navDrawer"
     :temporary="storeCore.isMobile"
     bottom
-    @click="rail = false"
     :image="storeSysConf.navBg"
+    disable-resize-watcher
   >
     <!-- 菜单 -->
     <v-list style="background: rgba(0, 0, 0, 0)" class="py-2">
