@@ -39,9 +39,9 @@ export default {
 .container-css {
   width: 100%;
   height: 100%;
-  background: linear-gradient(#bbdefb, #e3f2fd);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  background: linear-gradient(#e3f2fd, #f5fbff);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .v-main__wrap {
   padding-right: 20px;
