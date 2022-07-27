@@ -19,4 +19,18 @@ export const menuConf = [
       },
     ],
   },
+  {
+    label: 'Canvas',
+    path: '/canvas',
+    icon: 'apartment',
+    value: 'canvas',
+    children: [
+      {
+        label: 'canvas',
+        path: '/canvas/index',
+        icon: 'apartment',
+        value: 'canvas',
+      },
+    ],
+  },
 ];

@@ -23,6 +23,12 @@ const routes = [
         path: '/table/list',
         component: () => import('@/views/table/list.vue'),
       },
+      // canvas
+      {
+        name: '/canvas/index',
+        path: '/canvas/index',
+        component: () => import('@/views/canvas/index.vue'),
+      },
     ],
   },
 ];

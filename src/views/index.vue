@@ -9,7 +9,11 @@
     <vNavigation v-if="!storeCore.isMobile"></vNavigation>
     <!-- 内容部分 -->
     <v-main>
-      <v-container fluid class="container-css">
+      <v-container
+        fluid
+        class="container-css"
+        :style="{ height: height + 'px' }"
+      >
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -28,9 +32,11 @@ export default {
   setup() {
     const sysConf: ISysConf = useSysConfStore();
     const storeCore = useCoreStore();
+    const height = window.innerHeight - 64 - 20;
     return {
       sysConf,
       storeCore,
+      height,
     };
   },
 };
@@ -38,10 +44,13 @@ export default {
 <style>
 .container-css {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(#e3f2fd, #f5fbff);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: #e3f2fd;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 16px;
+  overflow: hidden;
 }
 .v-main__wrap {
   padding-right: 20px;
